@@ -1,0 +1,22 @@
+.new-tweet {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-tweet button {
+  background-color: #4056A1;
+  font-family: 'Bungee', cursive;
+  color: #ffff;
+}
+
+.new-tweet-button-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#tweet-text {
+  border-bottom: #4056A1 5px solid;
+}

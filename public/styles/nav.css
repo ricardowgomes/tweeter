@@ -1,0 +1,25 @@
+.navbar {
+  box-sizing: border-box;
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5em;
+}
+
+.navbar #logo {
+  font-family: 'Bungee', cursive;
+}
+
+.double-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fa-angle-double-down {
+  color: #c63030
+}
