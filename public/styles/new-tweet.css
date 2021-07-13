@@ -30,3 +30,7 @@
   height: 50px;
   outline-style: none;
 }
+
+.overcount {
+  color: red;
+}
