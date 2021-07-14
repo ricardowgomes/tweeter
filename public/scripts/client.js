@@ -34,40 +34,33 @@ const createPost = (post) => {
 };
 
 const renderPosts = (posts) => {
-  $('.display-tweets').empty();
+  let $tweetContainer = $('.display-tweets');
+  $tweetContainer.empty();
   for (const post of posts) {
     const $post = createPost(post);
-    $('.display-tweets').prepend($post);
+    $tweetContainer.prepend($post);
   }
 };
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
 $(document).ready(() => {
-  const $tweets = renderPosts(data);
-  $('.display-tweets').append($tweets);
+  const fetchPosts = () => {
+    $.get('/tweets', (posts) => {
+      const $tweets = renderPosts(posts);
+      $('.display-tweets').append($tweets);
+    });
+  };
+
+  fetchPosts();
+
+  const $form = $('#new-tweet');
+  $form.on('submit', function (event) {
+    event.preventDefault();
+
+    const urlEncodedData = $(this).serialize();
+
+    $.post('/tweets', urlEncodedData)
+      .then((response) => {
+        fetchPosts();
+      });
+  });
 });
