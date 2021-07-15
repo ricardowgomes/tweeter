@@ -1,4 +1,13 @@
 // const { renderTweets } = require('./helperFunctions');
+const sortRight = (array) => {
+  array.sort((a, b) => {
+    if (a.created_at > b.created_at) return -1;
+    if (a.created_at < b.created_at) return 1;
+    if (a.created_at === b.created_at) return 0;
+  });
+  return array;
+};
+
 const createTweets = (post) => {
   // Data from user:
   const uAvatar = post.user.avatars;
@@ -43,7 +52,8 @@ const createTweets = (post) => {
 const renderTweets = (posts) => {
   let $tweetContainer = $('.display-tweets');
   $tweetContainer.empty();
-  for (const post of posts) {
+  const sortedPosts = sortRight(posts);
+  for (const post of sortedPosts) {
     const $post = createTweets(post);
     $tweetContainer.prepend($post);
   }
@@ -90,6 +100,7 @@ $(document).ready(() => {
 
     const urlEncodedData = $(this).serialize();
 
+    // Empties the textarea
     textarea.val('');
 
     $.post('/tweets', urlEncodedData)
