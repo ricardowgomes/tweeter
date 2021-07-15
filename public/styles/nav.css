@@ -23,5 +23,20 @@
 }
 
 .fa-angle-double-down {
+  animation: updown 2s ease infinite;
   color: #c63030
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20%);
+  }
+
+  50% {
+    transform: translateY(20%);
+  }
+
+  100% {
+    transform: translateY(-20%);
+  }
 }

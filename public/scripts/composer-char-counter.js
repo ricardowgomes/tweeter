@@ -6,7 +6,8 @@ $(document).ready(() => {
   let $numInput = 0;
 
   // Grab typing
-  $textarea.on('keypress propertychange change click keyup input paste', () => {
+  $textarea.on('input', () => {
+    $('#error').html('');
     const $textareaValue = $textarea.val();
     $numInput = $textareaValue.length;
 
@@ -19,11 +20,11 @@ $(document).ready(() => {
     // Add red color to the counter when get to zero and disable the button
     if ($count <= 0) {
       $('output.counter').addClass('overcount');
-      $('.tweet-btn').attr('disabled', 'disabled');
+      // $('.tweet-btn').attr('disabled', 'disabled');
 
     } else {
       $('output.counter').removeClass('overcount');
-      $('.tweet-btn').removeAttr('disabled');
+      // $('.tweet-btn').removeAttr('disabled');
     }
   });
 });
