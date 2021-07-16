@@ -3,6 +3,7 @@
   margin-top: 1.5em;
   align-items: center;
   font-weight: 600;
+  color: #184059;
 }
 
 #new-tweet {
@@ -24,8 +25,17 @@
 }
 
 .new-tweet button {
-  background-color: #4056A1;
+  background-color: #184059;
   color: #ffff;
+  border: none;
+  border-radius: 0.1em;
+}
+
+.new-tweet button:hover {
+  background-color: #BF7B3F;
+  color: #ffff;
+  border: none;
+  border-radius: 0.1em;
 }
 
 .new-tweet-button-counter {
@@ -39,17 +49,18 @@
   width: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: solid #545149 4px;
+  border-bottom: solid #184059 4px;
   margin-bottom: 5px;
   font-size: 1.5rem;
   font-weight: bold;
   resize: none;
   height: 50px;
+  outline: none;
   /* outline-style: none; */
 }
 
 .overcount {
-  color: #931616;
+  color: #8C2F1B;
 }
 
 #error {
@@ -57,13 +68,33 @@
   justify-content: flex-end;
   align-items: center;
   font-weight: 300;
-  /* border: 1px solid #931616; */
-  border-radius: 1em;
+  /* border: 1px solid #8C2F1B; */
+  /* border-radius: 1em; */
   padding: 0.5em;
-  color: #931616;
+  color: #8C2F1B;
   margin-bottom: 0.5em;
 }
 
 #error img {
   margin-left: 0.5em;
+}
+
+@media (min-width: 1024px) {
+  .new-tweet {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  #new-tweet div:first-of-type {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #error {
+    font-size: 0.9em;
+  }
+  #error img {
+    margin-left: 0.3em;
+  }
 }

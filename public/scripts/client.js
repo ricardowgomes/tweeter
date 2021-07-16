@@ -1,4 +1,4 @@
-// const { renderTweets } = require('./helperFunctions');
+// Helper functions
 const sortRight = (array) => {
   array.sort((a, b) => {
     if (a.created_at > b.created_at) return -1;
@@ -69,6 +69,29 @@ $(document).ready(() => {
 
   loadTweets();
 
+  // Scroll to the position of the new-tweet form, no matter the device width
+  const $doubleArrow = $('.fa-angle-double-down');
+  const $headerH = Number($('header').css("height").replace(/[^0-9]/g, ''));
+  $doubleArrow.on('click', () => {
+    window.scrollTo(0, $headerH);
+    $('#tweet-text').focus();
+  });
+
+  $(document).on("scroll", (event) => {
+    const positionY = $(document).scrollTop();
+
+    if (positionY > $headerH) {
+      $doubleArrow.removeClass("fa-angle-double-down");
+      $doubleArrow.addClass("fa-angle-double-up");
+    }
+    if (positionY <= $headerH) {
+      $doubleArrow.removeClass("fa-angle-double-up");
+      $doubleArrow.addClass("fa-angle-double-down");
+    }
+
+  });
+
+  // Create a new tweet
   const $form = $('#new-tweet');
   $form.on('submit', function (event) {
     event.preventDefault();
@@ -102,6 +125,7 @@ $(document).ready(() => {
 
     // Empties the textarea
     textarea.val('');
+    $('#counter').text(140);
 
     $.post('/tweets', urlEncodedData)
       .then((response) => {

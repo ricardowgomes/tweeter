@@ -1,12 +1,41 @@
 header {
   box-sizing: border-box;
-  height: 400px;
+  height: 360px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background-color:#EDE247;
-  background-image: url(../images/yellow-bg.png);
-  margin-top: 120px;
+  background-color:#5D8AA6;
+  /* background-image: url(../images/yellow-bg.png); */
+  margin-top: 70px;
+}
+
+header h2 {
+  margin: 0;
+  color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 550px) {
+  header {
+    margin-top: 100px;
+    height: 180px;
+    flex-wrap: wrap;
+  }
+
+  header img {
+    height: 120px;
+    margin-bottom: 0;
+  }
+
+  header h2 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
 }
